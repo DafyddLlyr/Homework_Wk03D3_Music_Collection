@@ -22,7 +22,7 @@ Additionally it would be nice to be able to:
 - [X] Delete Artists/Albums
 - [X] Find Artists/Albums by their ID
 
-Additional functionality
+## Additional functionality
 
 - [X] Album count by artist
 - [X] List all unique genres for an artist
