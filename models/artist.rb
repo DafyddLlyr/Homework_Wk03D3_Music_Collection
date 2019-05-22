@@ -57,20 +57,52 @@ class Artist
 
 # Additional features
 
+# Using SQL
   def album_count()
-    return self.albums.length()
+    sql = "SELECT COUNT (title) FROM albums WHERE artist_id = $1"
+    values = [@id]
+    return SqlRunner.run(sql, values)[0]["count"].to_i
   end
 
+# Using Ruby
+  # def album_count()
+  #   return self.albums.length()
+  # end
+
+# Using SQL
   def list_genres()
-    return self.albums.map { |album| album.genre }.uniq
+    sql = "SELECT DISTINCT genre FROM albums WHERE artist_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.map { |genre| genre["genre"] }
   end
 
-  def self.all_genres()
-    return self.all.map { |artist| artist.list_genres}.flatten.uniq
+# Using Ruby
+  # def list_genres()
+  #   return self.albums.map { |album| album.genre }.uniq
+  # end
+
+  def self.all_genres
+    sql = "SELECT DISTINCT genre FROM albums"
+    result = SqlRunner.run(sql)
+    return result.map { |genre| genre["genre"] }
   end
 
+# Using Ruby
+  # def self.all_genres()
+  #   return self.all.map { |artist| artist.list_genres}.flatten.uniq
+  # end
+
+# Using SQL
   def self.genre_count
-    return self.all_genres().count()
+    sql = "SELECT COUNT (DISTINCT genre) FROM albums"
+    result = SqlRunner.run(sql)
+    return result[0]["count"].to_i
   end
+
+# Using Ruby
+  # def self.genre_count
+  #   return self.all_genres().count()
+  # end
 
 end

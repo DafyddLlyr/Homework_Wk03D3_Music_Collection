@@ -67,10 +67,19 @@ class Album
 
 # Additional features
 
+# Using SQL
   def genre_match()
-    result = 0
-    Album.all.map { |album| result += 1 if album.genre == self.genre}
-    return result
+    sql = "SELECT COUNT (genre) FROM albums WHERE genre = $1"
+    values = [@genre]
+    result = SqlRunner.run(sql, values)
+    return result[0]["count"].to_i
   end
+
+# Using Ruby
+  # def genre_match()
+  #   result = 0
+  #   Album.all.map { |album| result += 1 if album.genre == self.genre}
+  #   return result
+  # end
 
 end
