@@ -65,4 +65,12 @@ class Album
     return Album.new(result[0])
   end
 
+# Additional features
+
+  def genre_match()
+    result = 0
+    Album.all.map { |album| result += 1 if album.genre == self.genre}
+    return result
+  end
+
 end

@@ -55,4 +55,22 @@ class Artist
     return Artist.new(result[0])
   end
 
+# Additional features
+
+  def album_count()
+    return self.albums.length()
+  end
+
+  def list_genres()
+    return self.albums.map { |album| album.genre }.uniq
+  end
+
+  def self.all_genres()
+    return self.all.map { |artist| artist.list_genres}.flatten.uniq
+  end
+
+  def self.genre_count
+    return self.all_genres().count()
+  end
+
 end
