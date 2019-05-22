@@ -22,4 +22,10 @@ Additionally it would be nice to be able to:
 - [X] Delete Artists/Albums
 - [X] Find Artists/Albums by their ID
 
-Remember to regularly git commit!
+Additional functionality
+
+- [X] Album count by artist
+- [X] List all unique genres for an artist
+- [X] List genres for entire music collection
+- [X] List number of albums which match the genre of a given album
+- [X] Number of unique genres
